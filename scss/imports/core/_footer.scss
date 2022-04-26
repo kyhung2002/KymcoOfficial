@@ -1,0 +1,70 @@
+// css footer
+footer {
+    height: var(--height-footer);
+    background-color: $black-cl;
+    padding: 50px 0;
+    position: relative;
+    .container {
+        @include mid(true);
+        @include midX();
+        flex-direction: column;
+    }
+    .heading {
+        @include text(30px, db, unset, $white-cl, uppercase);
+        letter-spacing: 1.2px;
+    }
+    .social {
+        @include flexnomid;
+        margin-top: 50px;
+        object-fit: cover;
+        align-items: flex-end;
+        img {
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .submenu {
+        @include mid(true);
+        flex-wrap: wrap;
+        margin-top: 72px;
+        height: 100%;
+        li {
+            height: 100%;
+            padding: 0 15px;
+            &:not(:last-child) {
+                border-right: 1px solid $white-cl;
+            }
+        }
+        a {
+            @include text(16px, an, 22px, $white-cl, uppercase);
+            @include transition($t);
+            text-decoration: none;
+            letter-spacing: 0.64px;
+            &:hover {
+                @include transition($t);
+                color: $red-bold;
+            }
+        }
+    }
+    .logo {
+        margin-top: 40px;
+    }
+    .license {
+        @include text(16px, an, unset, $white-cl, uppercase);
+        margin-top: 20px;
+        text-align: center;
+    }
+    @include sm {
+        .submenu a {
+            font-size: 12px;
+        }
+    }
+    @include xs {
+        .heading {
+            font-size: 24px;
+        }
+        .license {
+            font-size: 10px;
+        }
+    }
+}

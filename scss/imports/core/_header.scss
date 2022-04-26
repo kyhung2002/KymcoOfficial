@@ -1,0 +1,278 @@
+// css header
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--height-header);
+    @include transition($t);
+    .container-fluid {
+        height: var(--height-header);
+        @include flexbetween;
+        position: relative;
+    }
+    .submenu {
+        position: absolute;
+        border-radius: 5px;
+
+        &:before {
+            @include fakediv(18px, 3px, $white-cl, true);
+            left: 22px;
+        }
+        &:after {
+            @include fakediv(100%, 20px, transparent, true);
+            top: -15px;
+        }
+        width: max-content;
+        padding: 15px 0;
+        top: 70px;
+        left: 15px;
+        background-color: $red-cl;
+        @include transition($t);
+        @include visible(0);
+        li {
+            display: block;
+            padding-top: 15px;
+        }
+        a {
+            position: relative;
+            &:after {
+                @include fakediv(0%, 1px, $white-cl, true);
+                @include transition($t);
+            }
+        }
+    }
+    .hide {
+        display: none;
+    }
+    .menu {
+        height: 100%;
+        @include midX;
+        @include mid(true);
+        li {
+            height: 100%;
+            padding: 0 20px;
+            @include mid(true);
+            position: relative;
+            &:hover {
+                .submenu {
+                    @include visible(1);
+                }
+            }
+        }
+        a {
+            @include text(16px, an, 22px, $white-cl, uppercase);
+            @include transition($t);
+            text-decoration: none;
+            padding: 5px 0;
+            letter-spacing: 0.64px;
+            position: relative;
+            &::after {
+                @include transition($t);
+                @include fakediv(0%, 2px, $white-cl, true);
+                bottom: 0;
+            }
+            &:hover::after {
+                width: 100%;
+                @include transition($t);
+            }
+        }
+    }
+    .options {
+        @include mid(true);
+        &.active {
+            .service__button {
+                display: none;
+            }
+            .search {
+                flex: 1;
+            }
+        }
+        .search {
+            @include mid(true);
+            cursor: pointer;
+            &.active {
+                .search__info {
+                    width: 100%;
+                    border-radius: 10px;
+                    @include transition($t);
+                }
+                .inputPackage {
+                    width: 100%;
+                    margin-left: 5px;
+                    @include transition($t);
+                    opacity: 1;
+                    .searchbtn {
+                        display: block;
+                        @include transition($t);
+                    }
+                }
+            }
+
+            .loop {
+                @include transition($t);
+            }
+            .inputPackage {
+                @include mid(true);
+                width: 0%;
+                opacity: 0;
+                background-color: $white-cl;
+                @include transition($t);
+                .searchbtn {
+                    @include text(16px, sn, unset, $white-cl, uppercase);
+                    background-color: $black-cl;
+                    height: 100%;
+                    padding: 10px;
+                    text-decoration: none;
+                    display: none;
+                    letter-spacing: 1px;
+                    @include transition($t);
+                }
+            }
+            &__info {
+                padding: 10px;
+                border: none;
+                outline: none;
+                @include text(16px, sn, unset, $black-cl, unset);
+                margin-left: 10px;
+                width: 0;
+                @include transition($t);
+            }
+        }
+        .cto {
+            position: relative;
+            .submenu {
+                top: 40px;
+                li {
+                    padding: 15px 20px 0px 20px;
+                }
+                a {
+                    @include text(16px, an, 22px, $white-cl, uppercase);
+                    @include transition($t);
+                    text-decoration: none;
+                    padding: 5px 0;
+                    letter-spacing: 0.64px;
+                    position: relative;
+                    &::after {
+                        @include transition($t);
+                        @include fakediv(0%, 2px, $white-cl, true);
+                        bottom: 0;
+                    }
+                    &:hover::after {
+                        width: 100%;
+                        @include transition($t);
+                    }
+                }
+            }
+            &:hover {
+                .submenu {
+                    @include visible(1);
+                    @include transition($t);
+                }
+            }
+        }
+        .service__button {
+            margin-left: 10px;
+            height: 28px;
+            padding: 0 20px;
+            background-color: $red-cl;
+            text-decoration: none;
+            @include text(16px, an, 22px, $white-cl, uppercase);
+            border-radius: 4px;
+            @include mid(true);
+            letter-spacing: 0.64px;
+            @include transition($t);
+            position: relative;
+
+            &:hover {
+                background-color: $red-bold;
+                @include transition($t);
+            }
+        }
+    }
+    &.active {
+        @include transition($t);
+        height: 70px;
+        background-color: $red-cl;
+        .container-fluid {
+            height: 70px;
+        }
+    }
+    .more {
+        height: 100%;
+        padding: 0 15px;
+        @include mid(true);
+        display: none;
+        z-index: 1;
+        &__icon {
+            width: 30px;
+            height: 2px;
+            background-color: $white-cl;
+            position: relative;
+            @include transition($t);
+            &.active {
+                background-color: transparent;
+                @include transition($t);
+                &::after {
+                    top: -5px;
+                    transform: rotate(45deg);
+                    @include transition($t);
+                }
+                &::before {
+                    bottom: 5px;
+                    transform: rotate(-45deg);
+                    @include transition($t);
+                }
+            }
+            &::after {
+                @include fakediv(30px, 2px, $white-cl, true);
+                top: 10px;
+                @include transition($t);
+            }
+            &::before {
+                @include fakediv(30px, 2px, $white-cl, true);
+                @include transition($t);
+                bottom: 10px;
+            }
+        }
+    }
+    @include maxW(1400px) {
+        .options {
+            .service__button {
+                font-size: 12px;
+                padding: 0 10px;
+            }
+            .loop {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        .menu {
+            li {
+                padding: 0 10px;
+            }
+            a {
+                font-size: 12px;
+            }
+        }
+        .logo__img {
+            width: 140px;
+        }
+    }
+    @include sm {
+        .menu,
+        .options {
+            display: none;
+        }
+        .more {
+            display: flex;
+        }
+        .container-fluid {
+            height: var(--height-header-mobile);
+        }
+        height: var(--height-header-mobile);
+        background-color: $red-cl;
+        @include transition($t);
+    }
+}

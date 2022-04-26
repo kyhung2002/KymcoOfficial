@@ -1,0 +1,44 @@
+.comingsoon {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background-color: $red-cl;
+    .container {
+    }
+    .content {
+        @include mid(false);
+        text-align: center;
+    }
+    .title {
+        @include text(70px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 1px;
+    }
+    .date {
+        @include text(56px, an, unset, $white-cl, unset);
+        margin-top: 15px;
+    }
+    @include maxW(1300px) {
+        .title {
+            font-size: 50px;
+        }
+        .date {
+            font-size: 36px;
+        }
+    }
+    @include sm {
+        .title {
+            font-size: 40px;
+        }
+        .date {
+            font-size: 28px;
+        }
+    }
+    @include xs {
+        .title {
+            font-size: 28px;
+        }
+        .date {
+            font-size: 16px;
+        }
+    }
+}

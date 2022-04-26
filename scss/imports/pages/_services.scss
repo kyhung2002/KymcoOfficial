@@ -1,0 +1,275 @@
+.services {
+    &__slider {
+        background: url(../img/serviceBanner.jpg) center/cover no-repeat;
+        height: 642px;
+        width: 100%;
+        position: relative;
+    }
+    &__content {
+        @include mid(false);
+        text-align: center;
+    }
+    &__title {
+        @include text(70px, sn, unset, $white-cl, uppercase);
+    }
+    &__subtitle {
+        @include text(25px, an, unset, $white-cl, unset);
+        margin-top: 20px;
+    }
+    @include sm {
+        &__slider {
+            height: 500px;
+        }
+        &__title {
+            font-size: 54px;
+        }
+        &__subtitle {
+            font-size: 18px;
+        }
+    }
+    @include xs {
+        &__slider {
+            height: 400px;
+        }
+        &__title {
+            font-size: 38px;
+        }
+        &__subtitle {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    }
+}
+.services__tab {
+    padding: var(--pd-section) 0;
+    .container {
+        .heading {
+            @include text(40px, sn, unset, $black-cl, uppercase);
+        }
+    }
+    .services__package {
+        margin-top: 55px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: 30px;
+    }
+    &-select {
+        .title {
+            @include text(40px, sn, unset, $black-cl, uppercase);
+            letter-spacing: 1.6px;
+        }
+        width: max-content;
+        letter-spacing: 1.2px;
+        padding: 40px 50px;
+        background-color: $red-cl;
+        grid-column: 1/5;
+        li {
+            color: $white-cl;
+            font-size: 15px;
+            width: 100%;
+            &:not(:last-child) {
+                padding-bottom: 15px;
+            }
+        }
+        a {
+            @include text(30px, sn, unset, $white-cl, uppercase);
+            width: 100%;
+            display: block;
+            cursor: pointer;
+            line-height: 1;
+            position: relative;
+            &:hover,
+            &.active {
+                &:before {
+                    @include transition($t);
+                    width: 35px;
+                }
+            }
+            &:before {
+                @include fakediv(7px, 7px, $white-cl, true);
+                @include transition($t);
+                right: calc(100% + 15px);
+                bottom: 2px;
+                will-change: width;
+            }
+        }
+    }
+    &-content {
+        grid-column: 6/13;
+        @include text(30px, sn, 40px, $black-cl, unset);
+        .item {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        .download__btn {
+            @include button(40px, 60px);
+            @include text(25px, sn, unset, $white-cl, uppercase);
+            @include transition($t);
+            background-color: $red-cl;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            margin-top: 85px;
+            cursor: pointer;
+            &:hover {
+                @include transition($t);
+                background-color: $red-bold;
+            }
+        }
+        .accordion {
+            padding: 20px 0;
+            border-top: 1px solid $grey-cl;
+            border-bottom: 1px solid $grey-cl;
+            &.active {
+                .panel__bottom {
+                    display: block;
+                }
+                .plus:after {
+                    @include transition($t);
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+            }
+            .panel {
+                @include flexbetween;
+                &__bottom {
+                    @include text(20px, an, unset, $black-cl, unset);
+                    margin-top: 5px;
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.3s ease-out;
+                }
+            }
+            .title {
+                flex: 1;
+                @include text(30px, sn, unset, $black-cl, unset);
+                letter-spacing: unset;
+            }
+            .plus {
+                width: 20px;
+                height: 20px;
+                position: relative;
+                cursor: pointer;
+
+                &:before {
+                    @include fakediv(100%, 3px, $black-cl, true);
+                    @include mid(false);
+                }
+                &:after {
+                    @include fakediv(100%, 3px, $black-cl, true);
+                    @include mid(false);
+                    transform: translate(-50%, -50%) rotate(90deg);
+                    @include transition($t);
+                }
+            }
+        }
+        .input {
+            &__package {
+                margin-top: 30px;
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -30px;
+            }
+            &__item {
+                width: calc(50% - 30px);
+                border: none;
+                outline: none;
+                margin-left: 30px;
+                border-bottom: 2px solid $black-cl;
+                @include text(16px, an, unset, $black-cl, unset);
+                margin-top: 25px;
+                padding: 6px 0;
+
+                &:last-child {
+                    width: 100%;
+                }
+            }
+        }
+        .sendbtn {
+            @include button(38px, 45px);
+            @include transition($t);
+            @include text(22px, sn, unset, $white-cl, uppercase);
+            background-color: $red-cl;
+            border-radius: 40px;
+            letter-spacing: 0.64px;
+            margin-top: 80px;
+            &:hover {
+                @include transition($t);
+                background-color: $red-bold;
+            }
+        }
+    }
+    @include sm {
+        padding: var(--pd-section-mb) 0;
+        .services__package {
+            column-gap: 0px;
+        }
+        .container {
+            max-width: 100%;
+        }
+        .services__package {
+            margin-top: 30px;
+        }
+        &-content {
+            .accordion {
+                .panel {
+                    &__bottom {
+                        font-size: 16px;
+                    }
+                }
+                .title {
+                    font-size: 26px;
+                }
+            }
+        }
+    }
+    @include xs {
+        .services__package {
+            display: block;
+        }
+        &-select {
+            width: 100%;
+            padding: 20px 40px;
+            a {
+                font-size: 22px;
+            }
+        }
+        &-content {
+            font-size: 22px;
+            margin-top: 20px;
+            .accordion {
+                .panel {
+                    &__bottom {
+                        font-size: 12px;
+                        line-height: 22px;
+                    }
+                }
+                .title {
+                    font-size: 20px;
+                }
+            }
+            .download__btn {
+                font-size: 16px;
+                height: 38px;
+                padding: 0 22px;
+                margin-top: 30px;
+            }
+            .input {
+                &__package {
+                    margin-top: 0;
+                    margin-left: unset;
+                }
+                &__item {
+                    width: 100%;
+                    margin-left: unset;
+                }
+            }
+            .sendbtn {
+                margin-top: 30px;
+                font-size: 16px;
+                padding: 0 22px;
+                height: 38px;
+            }
+        }
+    }
+}

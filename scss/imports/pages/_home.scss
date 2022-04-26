@@ -1,0 +1,642 @@
+// CSS HOMEPAGE
+// Ví dụ
+.slider {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    .top {
+        height: 100%;
+        .item {
+            width: 100%;
+            height: 100%;
+        }
+        .content {
+            position: absolute;
+            z-index: 1;
+            bottom: 256px;
+        }
+        .description {
+            @include text(48px, an, unset, $white-cl, unset);
+            max-width: 600px;
+        }
+        .image__package {
+            @include mid(false);
+            width: 100%;
+            height: 100%;
+        }
+        .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .bottom {
+        position: absolute;
+        bottom: 58px;
+        left: 0;
+        right: 0;
+        .left {
+            .scrolldown {
+                @include text(14px, an, 22px, $white-cl, unset);
+                writing-mode: vertical-rl;
+            }
+            .arrowdown {
+                margin-top: 20px;
+                animation: fadedown 0.8s linear infinite;
+                @keyframes fadedown {
+                    from {
+                        transform: translateY(0px);
+                    }
+                    to {
+                        transform: translateY(15px);
+                    }
+                }
+            }
+        }
+        .right {
+            .page__number {
+                @include text(74px, db, unset, $white-cl, uppercase);
+            }
+            .total__page {
+                @include text(48px, db, 35px, $sub-title, uppercase);
+                opacity: 0.5;
+            }
+        }
+    }
+    .flickity-viewport {
+        height: 100% !important;
+    }
+    .flickity-button {
+        background-color: $red-cl;
+        color: $white-cl;
+        border-radius: unset;
+        transform: translateY(-50%) skew(-10deg);
+        height: 54px;
+        width: 54px;
+        @include transition($t);
+        &:hover {
+            background-color:$red-bold;
+            @include transition($t);
+        }
+        
+    }
+
+    @include sm {
+        height: 70vh;
+        .top {
+            .description {
+                font-size: 32px;
+                max-width: 400px;
+            }
+            .content {
+                bottom: 200px;
+            }
+        }
+        .bottom {
+            bottom: 20px;
+            .right {
+                .page__number {
+                    font-size: 46px;
+                }
+                .total__page {
+                    font-size: 36px;
+                }
+            }
+        }
+        .flickity-prev-next-button {
+            display: none;
+        }
+    }
+}
+
+.mission {
+    padding: var(--pd-section) 0;
+    .featured__heading {
+        @include text(60px, sn, unset, $black-cl, uppercase);
+        text-align: center;
+        margin-bottom: 78px;
+        letter-spacing: 2.4px;
+    }
+    .pagenumber {
+        @include flexnomid;
+        @include text(74px, db, unset, $black-cl, uppercase);
+        .subnumber {
+            font-size: 48px;
+            color: $text-grey;
+        }
+    }
+    &__package {
+        display: flex;
+        align-items: center;
+        width: calc(var(--container-width) + ((100vw - var(--container-width)) / 2) - 15px);
+        margin-left: auto;
+    }
+    .content {
+        height: 100%;
+        z-index: 1;
+        position: relative;
+        max-width: 480px;
+        margin-right: -110px;
+    }
+    .text__item {
+        display: none;
+        @include transition($t);
+        position: relative;
+        &:before {
+            @include fakediv(calc(100vw - var(--container-width) / 2 + 75px), 2px, $black-cl, true);
+            right: calc(100% - 75px);
+        }
+        &.active {
+            animation: fadeIn 0.5s linear;
+            display: block;
+            &:before {
+                animation: widthFully 0.8s ease-in-out;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                transform: translateY(100px);
+                @include visible(0);
+            }
+            to {
+                transform: translateY(0);
+                @include visible(1);
+            }
+        }
+        @keyframes widthFully {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+    }
+    .right {
+        flex-shrink: 0;
+        flex-basis: 63%;
+        flex-grow: 1;
+        position: relative;
+        height: 452px;
+    }
+    .image__package {
+        position: relative;
+        height: 452px;
+        .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .flickity-viewport {
+            height: 100% !important;
+        }
+    }
+    .slide__button {
+        position: absolute;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 65px;
+        @include flexnomid;
+        .btn {
+            padding: 0 25px;
+            height: 100%;
+            display: block;
+            background-color: $red-cl;
+            text-decoration: none;
+            @include flexnomid;
+            &:hover {
+                background-color: $red-bold;
+                @include transition($t);
+            }
+        }
+        .--next {
+            transform: rotate(180deg);
+            position: relative;
+            &:after {
+                @include fakediv(2px, 40px, $white-cl, true);
+                right: 0;
+            }
+        }
+    }
+    @include md {
+        padding: var(--pd-section-mb) 0;
+        .mission__package {
+            flex-direction: column;
+            width: unset;
+            align-items: unset;
+            padding: 0 15px;
+        }
+        .content {
+            margin-right: unset;
+            max-width: unset;
+            margin-bottom: 15px;
+        }
+        .slide__button {
+            transform: unset;
+            left: 0;
+        }
+        .text__item {
+            .desc {
+                padding: 20px 0;
+            }
+        }
+    }
+    @include sm {
+        .text__item {
+            &:before {
+                width: 100px;
+            }
+        }
+    }
+    @include xs {
+        .image__package {
+            height: 250px;
+        }
+    }
+}
+
+.hot__products {
+    padding-bottom: var(--pb);
+    .content {
+        text-align: center;
+    }
+    .products__list {
+        display: flex;
+        justify-content: space-around;
+        margin: 80px 0 80px -30px;
+        flex-wrap: wrap;
+    }
+    .item {
+        position: relative;
+        height: 600px;
+        width: calc(100% / 3);
+        @include transition($t-low);
+        &:hover {
+            transform: scale(0.95);
+            @include transition($t-low);
+        }
+        &:last-child,
+        &:first-child {
+            transform: scale(0.8);
+            &:hover {
+                transform: scale(0.75);
+                @include transition($t-low);
+            }
+        }
+    }
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        @include mid(false);
+    }
+    .desc {
+        left: 20px;
+        position: absolute;
+        top: 20px;
+    }
+    .info {
+        @include text(47px, db, unset, $white-cl, uppercase);
+        letter-spacing: 1.88px;
+    }
+    .number {
+        @include text(78px, db, 60px, $white-cl, uppercase);
+        letter-spacing: 3.12px;
+    }
+    .viewdetail {
+        @include button(25px, 34px);
+        border-radius: 20px;
+        background-color: $red-cl;
+        text-decoration: none;
+        @include text(15px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 0.6px;
+        margin-top: 22px;
+        @include transition($t);
+        &:hover {
+            @include transition($t);
+            background-color: $red-bold;
+        }
+    }
+    .viewmore {
+        @include button(50px, 65px);
+        border-radius: 40px;
+        background-color: $red-cl;
+        text-decoration: none;
+        @include text(25px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 1px;
+        margin: 0 auto;
+        @include transition($t);
+        &:hover {
+            @include transition($t);
+            background-color: $red-bold;
+        }
+    }
+    @include md {
+        .products__list {
+            margin-top: 30px;
+            margin-left: unset;
+            margin-bottom: 60px;
+        }
+        .item {
+            width: calc(100% / 3);
+            height: 400px;
+            margin-left: unset;
+        }
+        .viewdetail {
+            height: 38px;
+        }
+    }
+    @include sm {
+        padding-bottom: var(--pd-section-mb);
+        .item {
+            height: 300px;
+        }
+        .desc {
+            top: 10px;
+            left: 10px;
+        }
+        .info {
+            font-size: 36px;
+        }
+        .number {
+            font-size: 60px;
+        }
+    }
+    @include xs {
+        .container {
+            max-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+        .products__list {
+            display: block;
+            justify-content: unset;
+        }
+        .item {
+            transition: unset;
+            height: 600px;
+            width: 70%;
+            margin: 0 10px;
+        }
+        .viewmore {
+            padding: 0 20px;
+            font-size: 20px;
+            height: 50px;
+        }
+    }
+    @include maxW(600px) {
+        .item {
+            height: 500px;
+        }
+    }
+}
+
+.banner {
+    height: 654px;
+    padding: 70px 0;
+    background-image: url(../img/banner-home.jpg);
+    background-position: center 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-attachment: fixed;
+    .container {
+        position: relative;
+    }
+    .content {
+        .heading {
+            max-width: 280px;
+            line-height: 65px;
+        }
+        .selectBtn {
+            @include button(50px, 65px);
+            border-radius: 40px;
+            background-color: $red-cl;
+            text-decoration: none;
+            @include text(25px, sn, unset, $white-cl, uppercase);
+            letter-spacing: 1px;
+            margin-top: 45px;
+            @include transition($t);
+            &:hover {
+                @include transition($t);
+                background-color: $red-bold;
+            }
+        }
+    }
+    @include md {
+        height: 400px;
+        background-image: url(../img/banner2.jpg);
+        background-position: left center;
+    }
+    @include xs {
+        .content {
+            .selectBtn {
+                height: 50px;
+                font-size: 20px;
+                padding: 0 20px;
+            }
+        }
+    }
+}
+
+.news {
+    padding: var(--pd-section) 0;
+    .content {
+        text-align: center;
+    }
+    .list {
+        margin-top: 75px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0 30px;
+        grid-gap: 30px;
+        .item {
+            &:first-child {
+                .title {
+                    max-width: 220px;
+                    margin: 0 auto;
+                }
+                .news__desc {
+                    height: 30px;
+                }
+            }
+        }
+        .image__package {
+            width: 100%;
+            height: 0;
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 90%;
+            .image {
+                @include mid(false);
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+                @include transition($t);
+                &:hover {
+                    transform: translate(-50%, -50%) scale(1.2);
+                    @include transition($t);
+                }
+            }
+        }
+        .info {
+            padding: 15px 25px;
+            border: 1px solid $grey-cl;
+            text-align: center;
+            .subtitle {
+                @include text(25px, sn, unset, $black-cl, uppercase);
+                @include overtext(1);
+                height: 25px;
+            }
+            .title {
+                @include text(35px, sn, unset, $black-cl, uppercase);
+                letter-spacing: 1.4px;
+                @include overtext(2);
+                height: 81px;
+                @include transition($t);
+                &:hover {
+                    @include transition($t);
+                    color: $red-cl;
+                }
+            }
+            .news__desc {
+                @include text(16px, an, unset, $black-cl, unset);
+                margin-top: 5px;
+                @include overtext(3);
+                height: 56px;
+                letter-spacing: 0.64px;
+                display: block;
+            }
+            .view__detail {
+                display: block;
+                margin-top: 20px;
+                text-decoration: underline;
+                @include text(16px, an, unset, $black-cl, unset);
+                letter-spacing: 0.64px;
+                @include transition($t);
+                &:hover {
+                    @include transition($t);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .view__more {
+        @include button(50px, 65px);
+        border-radius: 40px;
+        background-color: $red-cl;
+        text-decoration: none;
+        @include text(25px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 1px;
+        margin: 57px auto 0 auto;
+        @include transition($t);
+        &:hover {
+            @include transition($t);
+            background-color: $red-bold;
+        }
+    }
+    @include sm {
+        .container {
+            max-width: 100%;
+        }
+        .list {
+            margin-left: unset;
+            margin-top: 20px;
+            display: block;
+            padding: unset;
+            grid-gap: 0px;
+            .item {
+                width: 100%;
+                margin-left: unset;
+                margin-top: 40px;
+            }
+            .info {
+                .news__desc,
+                .title {
+                    display: block;
+                    overflow: unset;
+                    height: unset;
+                }
+                .title {
+                    font-size: 31px;
+                }
+                .news__desc {
+                    font-size: 13px;
+                }
+                .subtitle {
+                    font-size: 17px;
+                }
+            }
+            .image__package {
+                padding-bottom: 60%;
+            }
+        }
+    }
+    @include xs {
+        .view__more {
+            height: 50px;
+            padding: 0 20px;
+            font-size: 20px;
+        }
+    }
+}
+
+.network {
+    background-image: url(../img/homefooter.jpg);
+    overflow: hidden;
+    height: 655px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 25px 0;
+    position: relative;
+    .container {
+    }
+    .content {
+        text-align: center;
+    }
+    .network__img {
+        width: 100%;
+        left: 50%;
+        position: absolute;
+        transform: translateX(-50%);
+    }
+    .image {
+        width: 100%;
+        margin-top: 30px;
+        display: block;
+        z-index: 1;
+        object-fit: cover;
+    }
+    .view__more {
+        @include button(114px, 65px);
+        border-radius: 40px;
+        background-color: $red-cl;
+        text-decoration: none;
+        @include text(25px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 1px;
+        position: absolute;
+        bottom: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        @include transition($t);
+        &:hover {
+            @include transition($t);
+            background-color: $red-bold;
+        }
+    }
+    @include sm {
+        height: 400px;
+    }
+    @include xs {
+        display: none;
+    }
+}

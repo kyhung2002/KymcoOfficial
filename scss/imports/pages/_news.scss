@@ -1,0 +1,223 @@
+.news__banner {
+    position: relative;
+    width: 100%;
+    height: 645px;
+
+    .container {
+        z-index: 3;
+    }
+    &-content {
+        @include mid(false);
+        z-index: 3;
+        text-align: center;
+        .heading {
+            @include text(70px, sn, unset, $white-cl, uppercase);
+            letter-spacing: 2.8px;
+        }
+        .desc {
+            @include text(25px, an, unset, $white-cl, unset);
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+    }
+
+    &-item {
+        width: 100%;
+        height: 100%;
+    }
+    &-image {
+        height: 100%;
+        width: 100%;
+        @include mid(false);
+        .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    @include sm {
+        &-content {
+            .heading {
+                font-size: 54px;
+            }
+            .desc {
+                font-size: 18px;
+            }
+        }
+    }
+    @include xs {
+        height: 400px;
+        &-content {
+            .heading {
+                font-size: 45px;
+            }
+            .desc {
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.list__news {
+    padding: var(--pd-section) 0;
+    &-row {
+        margin-bottom: 80px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 0 30px;
+        grid-gap: 30px;
+    }
+    .image__package {
+        width: 100%;
+        height: 0;
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 90%;
+        .image {
+            @include mid(false);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            @include transition($t);
+            &:hover {
+                transform: translate(-50%, -50%) scale(1.2);
+                @include transition($t);
+            }
+        }
+    }
+    .item {
+        &:first-child {
+            .title {
+                max-width: 220px;
+                margin: 0 auto;
+            }
+            .news__desc {
+                height: 30px;
+            }
+        }
+    }
+    .info {
+        padding: 15px 25px;
+        border: 1px solid $grey-cl;
+        text-align: center;
+        .subtitle {
+            @include text(25px, sn, unset, $black-cl, uppercase);
+            @include overtext(1);
+            height: 25px;
+        }
+        .title {
+            @include text(35px, sn, unset, $black-cl, uppercase);
+            letter-spacing: 1.4px;
+            @include overtext(2);
+            height: 81px;
+            @include transition($t);
+            &:hover {
+                @include transition($t);
+                color: $red-cl;
+            }
+        }
+        .news__desc {
+            @include text(16px, an, unset, $black-cl, unset);
+            margin-top: 5px;
+            @include overtext(3);
+            height: 56px;
+            letter-spacing: 0.64px;
+            display: block;
+        }
+        .view__detail {
+            display: block;
+            padding: 20px 0;
+            text-decoration: underline;
+            @include text(16px, an, unset, $black-cl, unset);
+            letter-spacing: 0.64px;
+            @include transition($t);
+            &:hover {
+                @include transition($t);
+                text-decoration: none;
+            }
+        }
+    }
+    .pagination {
+        @include mid(true);
+        span {
+            @include text(31px, sn, unset, $black-cl, unset);
+            min-width: 60px;
+            height: 60px;
+            border: 1px solid $grey-cl;
+            @include mid(true);
+            @include transition($t);
+            margin: 0 15px;
+            cursor: pointer;
+            letter-spacing: 0.64px;
+            &:last-child,
+            &:first-child {
+                padding: 0 15px;
+            }
+            &:hover,
+            &.active {
+                @include transition($t);
+                background-color: $red-cl;
+                color: $white-cl;
+            }
+        }
+    }
+
+    @include sm {
+        padding: var(--pd-section-mb) 0;
+        .container {
+            max-width: 100%;
+        }
+
+        &-row {
+            margin-left: unset;
+            margin-top: 20px;
+            display: block;
+            padding: unset;
+            grid-gap: 0px;
+            .item {
+                width: 100%;
+                margin-left: unset;
+                margin-top: 40px;
+            }
+            .info {
+                .news__desc,
+                .title {
+                    display: block;
+                    overflow: unset;
+                    height: unset;
+                }
+                .title {
+                    font-size: 31px;
+                }
+                .news__desc {
+                    font-size: 13px;
+                }
+
+                .subtitle {
+                    font-size: 17px;
+                }
+            }
+            .image__package {
+                padding-bottom: 60%;
+            }
+        }
+        .pagination {
+            span {
+                font-size: 20px;
+                margin: 0 12px;
+                padding: 0 12px;
+                height: 50px;
+            }
+        }
+    }
+    @include xs {
+        .pagination {
+            span {
+                font-size: 18px;
+                margin: 0 8px;
+                padding: 0 12px;
+            }
+        }
+    }
+}

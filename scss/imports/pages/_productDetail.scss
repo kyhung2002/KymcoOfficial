@@ -1,0 +1,573 @@
+.product360 {
+    background: url(../../../img/bannerDetail.jpg) center/cover no-repeat;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    .main__product {
+        position: relative;
+        bottom: -130px;
+        &-img {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        &-btn {
+            cursor: pointer;
+            width: 100%;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            @include transition($t-low);
+            &:hover {
+                background-color: $red-rgba6;
+                @include transition($t-low);
+                &:before {
+                    transform: translate(-50%, -50%) scale(0.9);
+                    @include transition($t);
+                }
+                &:after {
+                    transform: translate(-50%, -50%) scale(1.2);
+                    background-color: rgba(244, 53, 44, 0);
+                    @include transition($t-low);
+                }
+            }
+            .image {
+                @include mid(false);
+            }
+            @include mid(false);
+            &:before {
+                @include fakediv(60%, 60%, $red-rgba7, false);
+                @include mid(false);
+                border-radius: 50%;
+                z-index: -1;
+                @include transition($t);
+            }
+            &::after {
+                @include fakediv(100%, 100%, $red-rgba6, false);
+                @include mid(false);
+                border-radius: 50%;
+                z-index: -1;
+                @include transition($t-low);
+            }
+        }
+    }
+}
+
+.productinfo {
+    margin-top: 127px;
+    .container {
+        @include mid(true);
+        flex-direction: column;
+    }
+    .color {
+        @include mid(true);
+        margin-left: -17px;
+        &__item {
+            cursor: pointer;
+            z-index: 10;
+            margin-left: 17px;
+        }
+    }
+    &__detail {
+        margin-top: 75px;
+        text-align: center;
+        .name {
+            @include text(80px, se, unset, $black-cl, uppercase);
+            letter-spacing: 3.2px;
+        }
+        .subtitle {
+            @include text(30px, svn, unset, $black-cl, unset);
+            font-weight: bold;
+            letter-spacing: 1.2px;
+        }
+        .desc {
+            @include text(22px, an, unset, $text-grey, unset);
+            margin-top: 35px;
+        }
+        .title__price {
+            position: relative;
+            @include text(35px, sn, unset, $black-cl, uppercase);
+            letter-spacing: 1.4px;
+            &:before {
+                @include fakediv(70px, 2px, $black-cl, false);
+                margin: 45px auto;
+            }
+        }
+        .price {
+            display: block;
+            @include text(70px, sn, unset, $black-cl, uppercase);
+        }
+    }
+    @include md {
+        &__detail {
+            margin-top: 50px;
+            .title__price {
+                font-size: 30px;
+            }
+            .price {
+                font-size: 40px;
+            }
+        }
+    }
+    @include xs {
+        &__detail {
+            margin-top: 28px;
+            .name {
+                font-size: 28px;
+            }
+            .subtitle {
+                font-size: 18px;
+                max-width: 250px;
+                margin: 19px auto 0 auto;
+            }
+            .desc {
+                font-size: 12px;
+                line-height: normal;
+                margin-top: 25px;
+            }
+            .title__price {
+                font-size: 20px;
+                &:before {
+                    margin: 35px auto;
+                }
+                .price {
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}
+
+.specifications {
+    padding-top: var(--pd-section);
+    display: flex;
+    width: calc(var(--container-width) + (100vw - var(--container-width)) / 2);
+    margin-right: auto;
+    &__img {
+        flex-basis: 798px;
+        flex-shrink: 0;
+        position: relative;
+        height: 625px;
+        .image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    &__info {
+        flex: 1;
+        padding-left: 40px;
+        .title {
+            @include text(60px, sn, unset, $black-cl, uppercase);
+            letter-spacing: 2.4px;
+        }
+    }
+    &__item {
+        .top {
+            cursor: pointer;
+            margin-top: 37px;
+            display: flex;
+            align-items: flex-end;
+            &.active {
+                .plus:after {
+                    @include transition($t);
+                    transform: translate(-50%, -50%) rotate(0deg);
+                }
+            }
+        }
+        .name {
+            @include text(35px, sn, unset, $black-cl, uppercase);
+            letter-spacing: 1.4px;
+        }
+        .line {
+            flex: 1;
+            height: 2px;
+            background-color: $black-cl;
+            margin: 0 20px 10px 20px;
+        }
+        .plus {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            &:before {
+                @include fakediv(100%, 6px, $black-cl, true);
+                @include mid(false);
+            }
+            &:after {
+                @include fakediv(100%, 6px, $black-cl, true);
+                @include mid(false);
+                transform: translate(-50%, -50%) rotate(90deg);
+                @include transition($t);
+            }
+        }
+        .bottom {
+            margin-top: 30px;
+            @include text(18px, an, unset, $text-grey, unset);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            .info {
+                margin-top: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .right {
+                @include mid(true);
+                flex-direction: column;
+                .data:not(:first-child) {
+                    margin-top: 15px;
+                }
+            }
+        }
+    }
+    @include maxW(1280px) {
+        padding-top: var(--pd-section-mb);
+        width: 100%;
+        padding-right: 40px;
+        &__img {
+            flex-basis: 580px;
+        }
+        &__item {
+            .top {
+                margin-top: 15px;
+            }
+            .name {
+                font-size: 30px;
+            }
+        }
+        &__info {
+            .title {
+                font-size: 50px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+    @include sm {
+        flex-direction: column-reverse;
+        padding-right: unset;
+        &__info {
+            padding: 0 15px;
+        }
+        &__img {
+            flex-basis: 100%;
+            height: 400px;
+        }
+    }
+    @include xs {
+        &__info {
+            .title {
+                font-size: 24px;
+            }
+        }
+        &__item {
+            .name {
+                font-size: 20px;
+            }
+            .plus {
+                &:before,
+                &::after {
+                    height: 3px;
+                }
+            }
+        }
+    }
+}
+
+.specialfeatured {
+    padding: var(--pd-section) 0;
+    .featured__heading {
+        @include text(60px, sn, unset, $black-cl, uppercase);
+        text-align: center;
+        margin-bottom: 78px;
+        letter-spacing: 2.4px;
+    }
+    .pagenumber {
+        display: flex;
+        @include text(74px, db, unset, $black-cl, uppercase);
+        align-items: flex-end;
+        .subnumber {
+            font-size: 48px;
+            color: $text-grey;
+            opacity: 0.6;
+        }
+    }
+    &__package {
+        display: flex;
+        align-items: center;
+        width: calc(var(--container-width) + ((100vw - var(--container-width)) / 2) - 15px);
+        margin-left: auto;
+    }
+    .content {
+        height: 100%;
+        z-index: 1;
+        position: relative;
+        max-width: 480px;
+        margin-right: 40px;
+    }
+    .text__item {
+        display: none;
+        @include transition($t);
+        position: relative;
+        &:before {
+            @include fakediv(calc(100vw - var(--container-width) / 2 + 75px), 2px, $black-cl, true);
+            right: calc(100% - 75px);
+        }
+        .heading {
+            font-size: 32px;
+            padding-top: 15px;
+        }
+        .desc {
+            @include overtext(6);
+        }
+        &.active {
+            animation: fadeIn 0.5s linear;
+            display: block;
+            &:before {
+                animation: widthFully 0.8s ease-in-out;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                transform: translateY(100px);
+                @include visible(0);
+            }
+            to {
+                transform: translateY(0);
+                @include visible(1);
+            }
+        }
+        @keyframes widthFully {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+    }
+    .right {
+        flex-shrink: 0;
+        flex-basis: 63%;
+        flex-grow: 1;
+        position: relative;
+        height: 452px;
+    }
+    .image__package {
+        position: relative;
+        height: 452px;
+        .image {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        .flickity-viewport {
+            height: 100% !important;
+        }
+    }
+    .slide__button {
+        position: absolute;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 65px;
+        @include flexnomid;
+        .btn {
+            padding: 0 25px;
+            height: 100%;
+            display: block;
+            background-color: $red-cl;
+            text-decoration: none;
+            @include flexnomid;
+            &:hover {
+                background-color: $red-bold;
+                @include transition($t);
+            }
+        }
+        .--next {
+            transform: rotate(180deg);
+            position: relative;
+            &:after {
+                @include fakediv(2px, 40px, $white-cl, true);
+                right: 0;
+            }
+        }
+    }
+    @include md {
+        padding: var(--pd-section-mb) 0;
+        .featured__heading {
+            margin-bottom: 40px;
+        }
+        .specialfeatured__package {
+            flex-direction: column;
+            width: unset;
+            align-items: unset;
+            padding: 0 15px;
+        }
+        .content {
+            margin-right: unset;
+            max-width: unset;
+            margin-bottom: 15px;
+        }
+        .slide__button {
+            transform: unset;
+            left: 0;
+        }
+        .text__item {
+            .desc {
+                padding: 20px 0;
+            }
+        }
+    }
+    @include sm {
+        .text__item {
+            &:before {
+                width: 100px;
+            }
+        }
+    }
+    @include xs {
+        .specialfeatured__package {
+            flex-direction: column-reverse;
+        }
+        .image__package {
+            height: 250px;
+        }
+        .featured__heading {
+            font-size: 24px;
+            margin-bottom: 34px;
+        }
+        .pagenumber {
+            font-size: 35px;
+            margin: 15px 0;
+            .subnumber {
+                font-size: 30px;
+                margin-left: 12px;
+            }
+        }
+        .text__item {
+            .heading {
+                font-size: 22px;
+            }
+            .desc {
+                font-size: 12px;
+                padding-bottom: unset;
+                padding-top: 10px;
+            }
+        }
+    }
+}
+
+.modal360 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    .main360 {
+        @include mid(false);
+        @include mid(true);
+        flex-direction: column;
+        &__name {
+            @include text(140px, sn, unset, $white-cl, uppercase);
+        }
+        &__desc {
+            @include text(28px, sn, unset, $white-cl, uppercase);
+            text-align: center;
+        }
+        &__item {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        &.active {
+            display: block;
+        }
+    }
+    .button {
+        @include midY;
+        @include flexbetween;
+        width: 100%;
+        cursor: pointer;
+    }
+    .close__btn {
+        position: absolute;
+        cursor: pointer;
+        right: 80px;
+        top: 80px;
+        width: 120px;
+        height: 120px;
+        z-index: 40;
+        border-radius: 50%;
+        @include mid(true);
+        &:hover {
+            background-color: $red-rgba6;
+            @include transition($t-low);
+            &:before {
+                transform: scale(0.9);
+                @include transition($t);
+            }
+            &:after {
+                transform: scale(1.2);
+                background-color: rgba(244, 53, 44, 0);
+                @include transition($t-low);
+            }
+        }
+        &:before {
+            @include fakediv(60%, 60%, $red-rgba7, false);
+            border-radius: 50%;
+            z-index: -1;
+            @include transition($t);
+            position: absolute;
+        }
+        &::after {
+            @include fakediv(100%, 100%, $red-rgba6, false);
+            border-radius: 50%;
+            z-index: -1;
+            @include transition($t-low);
+            position: absolute;
+        }
+    }
+    @include sm {
+        .main360 {
+            &__name {
+                font-size: 80px;
+            }
+        }
+        .button {
+            .prev,
+            .next {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .close__btn {
+            width: 80px;
+            height: 80px;
+            right: 40px;
+        }
+    }
+    @include xs {
+        .main360 {
+            &__name {
+                font-size: 40px;
+            }
+            &__desc {
+                font-size: 20px;
+            }
+        }
+        .button {
+            .prev,
+            .next {
+                width: 60px;
+                height: 70px;
+            }
+        }
+    }
+}

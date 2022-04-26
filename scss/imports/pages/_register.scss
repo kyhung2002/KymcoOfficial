@@ -1,0 +1,273 @@
+.register {
+    width: 100%;
+    height: 642px;
+    background: url(../img/registerbanner.jpg) center/cover no-repeat;
+    position: relative;
+    .container {
+    }
+    &__content {
+        @include mid(false);
+        text-align: center;
+    }
+    .heading {
+        @include text(70px, sn, unset, $white-cl, uppercase);
+        letter-spacing: 2.8px;
+        width: max-content;
+        margin: 0 auto;
+    }
+    .desc {
+        @include text(25px, an, unset, $white-cl, unset);
+        letter-spacing: 1px;
+        margin-top: 14px;
+    }
+    @include sm {
+        height: 480px;
+        .heading {
+            font-size: 54px;
+        }
+        .desc {
+            font-size: 18px;
+        }
+    }
+    @include xs {
+        height: 340px;
+        .heading {
+            font-size: 38px;
+        }
+        .desc {
+            font-size: 16px;
+        }
+    }
+}
+.newregister {
+    max-width: calc(var(--container-width) + (100vw - var(--container-width)) / 2);
+    margin-right: auto;
+    display: flex;
+    padding: var(--pd-section) 0;
+    .left {
+        flex-basis: 45%;
+        flex-shrink: 0;
+    }
+    &__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .right {
+        --pd-left: 96px;
+        flex-basis: calc(55% - var(--pd-left));
+        padding-left: var(--pd-left);
+        &:before {
+            @include fakediv(170px, 10px, $black-cl, false);
+            margin-top: 35px;
+            margin-bottom: 46px;
+            transform: translateX(calc(-100% + 25px));
+        }
+        .registbtn {
+            @include button(30px, 62px);
+            @include text(25px, sn, unset, $white-cl, uppercase);
+            background-color: $red-cl;
+            text-decoration: none;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            @include transition($t);
+            &:hover {
+                @include transition($t);
+                background-color: $red-bold;
+            }
+        }
+    }
+    .title {
+        @include text(50px, sn, unset, $black-cl, uppercase);
+        letter-spacing: 2px;
+    }
+    .desc {
+        @include text(30px, sn, unset, $black-cl, unset);
+        letter-spacing: 1.2px;
+        max-width: 600px;
+    }
+    .form {
+        --item-gap: 30px;
+        padding-top: 77px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: calc(-1 * var(--item-gap));
+
+        flex-wrap: wrap;
+        &__item {
+            width: calc(50% - var(--item-gap));
+            margin-left: var(--item-gap);
+            margin-bottom: 50px;
+            padding-bottom: 8px;
+            @include text(22px, an, unset, $text-grey, unset);
+            letter-spacing: 0.88px;
+            border: none;
+            outline: none;
+            border-bottom: 2px solid $black-cl;
+            &:nth-child(3) {
+                width: 100%;
+            }
+        }
+        .selected {
+            width: calc(50% - var(--item-gap));
+            margin-left: var(--item-gap);
+            margin-bottom: 50px;
+            position: relative;
+
+            display: flex;
+            letter-spacing: 0.88px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid $black-cl;
+            cursor: pointer;
+            .type {
+                flex: 1;
+                @include text(22px, an, unset, $text-grey, unset);
+            }
+
+            &.active {
+                .listtype {
+                    display: block;
+                }
+                .arrow {
+                    &:before {
+                        transform: rotate(138deg);
+                        @include transition($t);
+                    }
+                    &:after {
+                        transform: rotate(-138deg);
+                        @include transition($t);
+                    }
+                }
+            }
+        }
+        .arrow {
+            display: block;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            &:before {
+                @include fakediv(15px, 2px, $black-cl, true);
+                transform: rotate(44deg);
+                @include transition($t);
+                bottom: 8px;
+            }
+            &:after {
+                @include fakediv(15px, 2px, $black-cl, true);
+                @include transition($t);
+                transform: rotate(-44deg);
+                bottom: 8px;
+                left: 10px;
+            }
+        }
+        .listtype {
+            position: absolute;
+            top: 36px;
+            width: 100%;
+            display: none;
+
+            @include text(18px, an, unset, $text-grey, unset);
+
+            li {
+                padding: 6px;
+                border-bottom: 1px solid $grey-cl;
+                border-left: 1px solid $grey-cl;
+                border-right: 1px solid $grey-cl;
+                z-index: 10;
+                background-color: $white-cl;
+            }
+        }
+    }
+    @include maxW(1600px) {
+        .form__item {
+            font-size: 18px;
+        }
+        .form {
+            .selected {
+                .type {
+                    font-size: 18px;
+                }
+            }
+        }
+        .right {
+            --pd-left: 40px;
+        }
+    }
+    @include sm {
+        .right {
+            --pd-left: 10px;
+            &:before {
+                margin: 20px 0;
+            }
+            .registbtn {
+                height: 48px;
+                padding: 0 20px;
+                font-size: 20px;
+            }
+        }
+        .left {
+            flex-basis: 40%;
+        }
+
+        .form__item {
+            font-size: 14px;
+        }
+        .form {
+            padding-top: 30px;
+            .selected {
+                .type {
+                    font-size: 14px;
+                }
+            }
+            .listtype {
+                font-size: 16px;
+            }
+        }
+    }
+    @include xs {
+        max-width: 100%;
+        padding: var(--pd-section-mb) 15px;
+        .title {
+            display: none;
+        }
+        .desc {
+            font-size: 22px;
+            text-align: center;
+        }
+        .form {
+            margin-left: unset;
+            .listtype {
+                font-size: 16px;
+            }
+        }
+        .left {
+            display: none;
+        }
+        .right {
+            flex-basis: 100%;
+            padding-left: unset;
+            &:before {
+                display: none;
+            }
+            .registbtn {
+                margin: 0 auto;
+            }
+        }
+        .form__item {
+            width: 100%;
+            margin-left: unset;
+            font-size: 16px;
+        }
+        .form {
+            .selected {
+                width: 100%;
+                margin-left: unset;
+
+                .type {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

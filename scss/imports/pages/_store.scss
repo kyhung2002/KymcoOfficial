@@ -1,0 +1,249 @@
+.store__banner {
+    height: 642px;
+    width: 100%;
+    position: relative;
+    background: url(../img/storebanner.jpg) center/cover no-repeat;
+    .container {
+    }
+    .store__content {
+        @include mid(false);
+        text-align: center;
+        width: 100%;
+    }
+    .heading {
+        @include text(70px, sn, unset, $white-cl, uppercase);
+    }
+    .desc {
+        @include text(25px, an, unset, $white-cl, unset);
+        margin-top: 15px;
+    }
+    @include sm {
+        height: 480px;
+        .heading {
+            font-size: 54px;
+        }
+        .desc {
+            font-size: 18px;
+        }
+    }
+    @include xs {
+        height: 340px;
+        .heading {
+            font-size: 38px;
+        }
+        .desc {
+            font-size: 16px;
+        }
+    }
+}
+.agent {
+    padding-top: 95px;
+    padding-bottom: var(--pd-section);
+    .title {
+        @include text(40px, sn, unset, $black-cl, uppercase);
+        text-align: center;
+        padding-bottom: 6px;
+    }
+    &__search {
+        padding-top: 80px;
+        border-top: 1px solid $grey-cl;
+        display: flex;
+    }
+    .left {
+        flex: 1;
+    }
+    .right {
+        width: 62%;
+        height: 854px;
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .selection {
+        background-color: $red-cl;
+        padding: 28px 37px;
+        &__top {
+            @include flexnomid;
+            @include text(35px, sn, unset, $white-cl, uppercase);
+            letter-spacing: 1.4px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid $white-cl;
+            .line {
+                height: 40px;
+                width: 3px;
+                margin: 5px 20px 0 20px;
+                background-color: $white-cl;
+            }
+            .option__item {
+                cursor: pointer;
+                width: max-content;
+
+                @include transition($t);
+                &.active {
+                    opacity: 1;
+                    @include transition($t);
+                }
+                opacity: 0.5;
+            }
+        }
+        &__bottom {
+            padding-top: 27px;
+            margin-left: -22px;
+            margin-right: -22px;
+            @include flexnomid;
+            .selected {
+                margin: 0 22px;
+                width: 100%;
+                @include flexbetween;
+                cursor: pointer;
+                position: relative;
+                padding-bottom: 12px;
+                border-bottom: 1px solid $white-cl;
+                .options {
+                    position: absolute;
+                    width: 100%;
+                    top: 30px;
+                    background-color: $white-cl;
+                    max-height: 200px;
+                    overflow-y: scroll;
+                    @include customscroll(5px, $grey-cl, $red-cl);
+                    display: none;
+                    li {
+                        @include text(15px, an, unset, $black-cl, uppercase);
+                        padding: 12px;
+                        border-bottom: 1px solid $grey-cl;
+                        letter-spacing: 0.64px;
+                    }
+                }
+                &.active {
+                    .arrow {
+                        &:before {
+                            transform: rotate(138deg);
+                            @include transition($t);
+                        }
+                        &:after {
+                            transform: rotate(-138deg);
+                            @include transition($t);
+                        }
+                    }
+                    .options {
+                        display: block;
+                    }
+                }
+                &__name {
+                    @include text(22px, an, unset, $white-cl, unset);
+                    width: max-content;
+                }
+                .arrow {
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                    position: relative;
+                    margin-left: 30px;
+                    cursor: pointer;
+                    &:before {
+                        @include fakediv(15px, 2px, $white-cl, true);
+                        transform: rotate(44deg);
+                        @include transition($t);
+                        bottom: 8px;
+                    }
+                    &:after {
+                        @include fakediv(15px, 2px, $white-cl, true);
+                        @include transition($t);
+                        transform: rotate(-44deg);
+                        bottom: 8px;
+                        left: 10px;
+                    }
+                }
+            }
+        }
+    }
+    &__list {
+        padding: 15px 37px;
+        max-height: 682px;
+        overflow-y: scroll;
+        display: none;
+        &.active {
+            display: block;
+        }
+        @include customscroll(5px, $grey-cl, $red-cl);
+        .item {
+            padding: 18px 0;
+            border-bottom: 2px solid $black-cl;
+        }
+        .item__name {
+            @include text(30px, sn, unset, $black-cl, unset);
+        }
+        .icon {
+            padding-right: 14px;
+        }
+        .info {
+            margin-top: 20px;
+            a {
+                @include flexnomid;
+                text-decoration: none;
+                @include text(18px, an, unset, $text-grey, unset);
+            }
+        }
+    }
+    @include maxW(1300px) {
+        .selection__bottom {
+            .selected {
+                &__name {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    @include sm {
+        .title {
+            font-size: 38px;
+        }
+        .selection__top {
+            font-size: 28px;
+        }
+        .selection__bottom {
+            .selected {
+                &__name {
+                    font-size: 16px;
+                }
+                .arrow {
+                    margin-left: 5px;
+                }
+            }
+        }
+        &__list {
+            .item__name {
+                font-size: 24px;
+            }
+            max-height: 560px;
+            .info {
+                a {
+                    font-size: 16px;
+                }
+            }
+        }
+        .right {
+            height: 750px;
+        }
+    }
+    @include xs {
+        padding: var(--pd-section-mb) 0;
+        &__search {
+            flex-direction: column-reverse;
+            padding-top: 40px;
+            .selection {
+                padding: 12px 16px;
+            }
+            .right {
+                height: 270px;
+                width: 100%;
+            }
+        }
+        &__list {
+            padding: 12px 16px;
+            max-height: unset;
+        }
+    }
+}

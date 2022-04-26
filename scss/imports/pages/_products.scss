@@ -1,0 +1,736 @@
+.products__slider {
+    width: 100%;
+    height: 530px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 56px;
+    &-list {
+        width: 100%;
+        height: 100%;
+    }
+    &-item {
+        width: 100%;
+        height: 100%;
+    }
+    &-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        @include mid(false);
+    }
+}
+.advertise {
+    &__content {
+        text-align: center;
+    }
+    @include xs {
+        &__content {
+            &.textbox {
+                h3 {
+                    font-size: 24px;
+                }
+                p {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+.products__featured {
+    padding: var(--pd-section) 0;
+    &-tabs {
+        width: calc(var(--container-width) + (100vw - var(--container-width)) / 2 - 15px);
+        margin-left: auto;
+        display: flex;
+        &:after {
+            content: "";
+            display: block;
+            position: relative;
+            flex: 1;
+            height: 2px;
+            background-color: $black-cl;
+            margin-top: 50px;
+        }
+        .tabs__option {
+            @include text(50px, sn, unset, $grey-cl, uppercase);
+            @include transition($t);
+            padding: 0 30px;
+            cursor: pointer;
+            &:first-child {
+                position: relative;
+                &::after {
+                    @include fakediv(2px, 100%, $black-cl, true);
+                    right: 0;
+                    top: 0;
+                }
+            }
+            &.active {
+                color: $black-cl;
+                @include transition($t);
+            }
+        }
+    }
+
+    &-item {
+        display: flex;
+        position: relative;
+
+        &:before {
+            position: absolute;
+            width: calc(100% + 90px);
+            height: 510px;
+            content: "";
+            display: block;
+            background-color: $grey-lighting;
+            z-index: -1;
+            left: 50%;
+            transform: translate(-50%) skew(-10deg, 0);
+        }
+        &:first-child::before {
+            top: 11px;
+        }
+        &:not(:first-child) {
+            margin-top: 150px;
+        }
+        &:nth-child(even) {
+            padding-left: 60px;
+            flex-direction: row-reverse;
+            .products__featured-img {
+                margin-right: -175px;
+            }
+            .products__sublist {
+                padding-right: 120px;
+            }
+        }
+        .left {
+            position: relative;
+        }
+        .right {
+            flex: 1;
+            padding-left: 30px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    }
+
+    &-img {
+        max-width: unset;
+        margin-left: -175px;
+    }
+
+    &-content {
+        .products__featured-name {
+            max-width: 465px;
+        }
+        .products__featured-desc {
+            font-size: 18px;
+            max-width: 400px;
+        }
+    }
+
+    .products__options-list {
+        margin-top: 110px;
+        .products__options-page {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+        // Page 1
+        .products__sublist {
+            margin-top: 35px;
+            height: 177px;
+            position: relative;
+            .flickity-prev-next-button {
+                width: 80px;
+                height: 80px;
+                border-radius: unset;
+                background-color: $red-cl;
+                color: white;
+                @include transition($t);
+                &:hover {
+                    @include transition($t);
+                    background-color: $red-bold;
+                }
+                &.next {
+                    left: calc(100% - 45px);
+                    transform: translateY(-50%) skew(-8deg, 0);
+                }
+                &.previous {
+                    left: unset;
+                    right: calc(100% - 45px);
+                    transform: translateY(-50%) skew(-8deg, 0);
+                }
+            }
+            .flickity-button:disabled {
+                display: none;
+            }
+            &-item {
+                position: relative;
+                height: 160px;
+                margin-right: 60px;
+                width: 180px;
+                &:hover {
+                    .products__sublist-buttons {
+                        @include transition($t);
+                        @include visible(1);
+                    }
+                }
+            }
+            .name {
+                position: absolute;
+                @include text(22px, sn, unset, $black-cl, uppercase);
+                top: -5px;
+            }
+            .image {
+                height: 100px;
+                width: 100%;
+            }
+            .bottom {
+                position: relative;
+                &:before {
+                    @include fakediv(2px, 100%, $black-cl, true);
+                }
+            }
+            .content {
+                margin-left: 10px;
+            }
+            .subtitle {
+                @include text(13px, sn, unset, $black-cl, uppercase);
+            }
+            .price {
+                @include text(30px, sn, unset, $black-cl, uppercase);
+            }
+            &-buttons {
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                @include transition($t);
+                @include visible(0);
+
+                .btn {
+                    @include text(22px, sn, unset, $white-cl, uppercase);
+                    @include button(35px, 40px);
+                    background-color: $red-cl;
+                    letter-spacing: 0.88px;
+                    border-radius: 40px;
+
+                    &:hover {
+                        background-color: $red-bold;
+                        @include transition($t);
+                    }
+                }
+                .viewdetail {
+                    margin-bottom: 20px;
+                }
+                .comparebike {
+                }
+            }
+        }
+        // Page 2
+        .products__options-content {
+            text-align: center;
+        }
+        .img2 {
+            display: none;
+        }
+        .bike__category {
+            padding: 90px 0 50px 0;
+            border-bottom: 1px solid $grey-cl;
+            @include flexbetween();
+            // type
+            &-type {
+                @include flexnomid();
+            }
+            .name {
+                @include text(30px, sn, unset, $black-cl, uppercase);
+                padding-right: 15px;
+            }
+            &-list {
+                @include flexnomid;
+            }
+            &-item {
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                background-color: $white-cl;
+                @include mid(true);
+                @include transition($t);
+                flex-direction: column;
+                margin: 0 15px;
+                border: 1px solid $black-cl;
+                &.active,
+                &:hover {
+                    background-color: $red-cl;
+                    border: none;
+                    @include transition($t);
+                    .img1 {
+                        display: none;
+                        @include transition($t);
+                    }
+                    .img2 {
+                        display: block;
+                        @include transition($t);
+                    }
+                    .type {
+                        color: $white-cl;
+                        @include transition($t);
+                    }
+                }
+            }
+            .type {
+                @include text(18px, sn, unset, $black-cl, uppercase);
+                margin-top: 10px;
+            }
+            // End Type
+            // Engine
+            &-engine {
+                @include flexnomid();
+            }
+            .bike__engine {
+                &-list {
+                    @include flexnomid();
+                }
+                &-item {
+                    width: 100px;
+                    height: 100px;
+                    @include mid(true);
+                    @include transition($t);
+                    flex-direction: column;
+                    margin: 0 15px;
+                    cursor: pointer;
+                    border: 1px solid $black-cl;
+                    .certificate {
+                        @include text(36px, sn, unset, $black-cl, uppercase);
+                        @include transition($t);
+                        &__name {
+                            @include text(18px, sn, 18px, $black-cl, uppercase);
+                            margin-top: 5px;
+                            @include transition($t);
+                        }
+                    }
+
+                    &:not(:last-child) {
+                        .certificate {
+                            @include text(30px, sn, unset, $black-cl, uppercase);
+                            @include transition($t);
+                            &__name {
+                                @include text(68px, sn, 39px, $black-cl, uppercase);
+                                @include transition($t);
+                                height: 50px;
+                            }
+                        }
+                    }
+                    &:hover,
+                    &.active {
+                        background-color: $red-cl;
+                        border: none;
+                        .certificate {
+                            color: $white-cl;
+                            &__name {
+                                color: $white-cl;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .vehicle__style {
+            .title {
+                text-align: center;
+                font-size: 36px;
+                margin-top: 50px;
+            }
+            &-options {
+                @include mid(true);
+                margin-top: 25px;
+                margin-bottom: 40px;
+                .blackImg {
+                }
+                .whiteImg {
+                    display: none;
+                }
+            }
+            &-item {
+                @include mid(true);
+                flex-direction: column;
+                width: 100px;
+                height: 100px;
+                margin: 0 15px;
+                cursor: pointer;
+                @include transition($t);
+                border: 1px solid $black-cl;
+                &.active {
+                    background-color: $red-cl;
+                    border: none;
+
+                    .blackImg {
+                        display: none;
+                    }
+                    .whiteImg {
+                        display: block;
+                    }
+                    .gender {
+                        color: $white-cl;
+                    }
+                }
+                &:hover {
+                    background-color: $red-cl;
+                    border: none;
+                    color: $white-cl;
+                    .blackImg {
+                        display: none;
+                    }
+                    .whiteImg {
+                        display: block;
+                    }
+                    .gender {
+                        color: $white-cl;
+                    }
+                }
+                .gender {
+                    margin-top: 5px;
+                    @include text(16px, sn, unset, $black-cl, uppercase);
+                }
+            }
+            .find__products {
+                @include button(30px, 48px);
+                @include text(20px, sn, unset, $white-cl, uppercase);
+                @include transition($t);
+                background-color: $red-cl;
+                margin: 0 auto;
+                border-radius: 30px;
+                letter-spacing: 0.64px;
+                &:hover {
+                    background-color: $red-bold;
+                    @include transition($t);
+                }
+            }
+        }
+        .range {
+            @include mid(true);
+            flex-direction: column;
+            padding: 50px 0;
+            border-bottom: 1px solid $grey-cl;
+            &__content {
+                text-align: center;
+                .heading {
+                    @include text(30px, sn, unset, $black-cl, uppercase);
+                    letter-spacing: 0.64px;
+                    margin-bottom: 12px;
+                }
+                .desc {
+                    @include text(16px, an, unset, $black-cl, uppercase);
+                    letter-spacing: 0.64px;
+                }
+            }
+            &__input {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding-top: 60px;
+            }
+            .min,
+            .max {
+                @include mid(true);
+                flex-direction: column;
+                width: 25%;
+            }
+            .title {
+                @include text(30px, sn, unset, $black-cl, uppercase);
+                letter-spacing: 0.64px;
+            }
+            .price {
+                @include text(30px, sn, unset, $black-cl, uppercase);
+                letter-spacing: 0.64px;
+                width:max-content;
+            }
+
+            .wrapper {
+                position: relative;
+                width: 50%;
+                background-color: #ffffff;
+                border-radius: 10px;
+            }
+            input[type="range"] {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                width: 100%;
+                outline: none;
+                position: absolute;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                background-color: transparent;
+                pointer-events: none;
+            }
+            .slider-track {
+                width: 100%;
+                height: 2px;
+                position: absolute;
+                margin: auto;
+                top: 0;
+                bottom: 0;
+                border-radius: 5px;
+                background-color: $black-cl;
+            }
+            input[type="range"]::-webkit-slider-runnable-track {
+                -webkit-appearance: none;
+                height: 5px;
+            }
+            input[type="range"]::-moz-range-track {
+                -moz-appearance: none;
+                height: 5px;
+            }
+            input[type="range"]::-ms-track {
+                appearance: none;
+                height: 5px;
+            }
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 2.4em;
+                width: 2.4em;
+                margin-top: -10px;
+                background-color: $red-cl;
+                cursor: pointer;
+                pointer-events: auto;
+                border-radius: 50%;
+            }
+            input[type="range"]::-moz-range-thumb {
+                -webkit-appearance: none;
+                height: 1.7em;
+                width: 1.7em;
+                cursor: pointer;
+                border-radius: 50%;
+                background-color: $red-cl;
+                pointer-events: auto;
+            }
+            input[type="range"]::-ms-thumb {
+                appearance: none;
+                height: 1.7em;
+                width: 1.7em;
+                cursor: pointer;
+                border-radius: 50%;
+                background-color: $red-cl;
+                pointer-events: auto;
+            }
+            input[type="range"]:active::-webkit-slider-thumb {
+                border: 3px solid $red-cl;
+            }
+        }
+    }
+    // Responsive
+    // Max Width 1600
+    @include md {
+        .products__options-list {
+            .bike__category {
+                &-item,
+                .bike__engine-item {
+                    margin: 0 8px;
+                }
+
+                .name {
+                    padding-right: 8px;
+                }
+            }
+        }
+    }
+    @include lg {
+        &-item {
+            &:before {
+                width: 100%;
+            }
+            &:nth-child(even) {
+                padding-left: 60px;
+                flex-direction: row-reverse;
+                .products__featured-img {
+                    margin-right: -40px;
+                }
+                .products__sublist {
+                    padding-right: unset;
+                }
+            }
+        }
+        &-img {
+            margin-left: -40px;
+        }
+        .products__options-list {
+            .products__sublist {
+                margin-top: 20px;
+                .price {
+                    font-size: 20px;
+                }
+                .name {
+                    font-size: 16px;
+                    top: 0;
+                }
+                .flickity-prev-next-button {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+    @include maxW(1259px) {
+        &-tabs {
+            width: unset;
+        }
+        &-name {
+            max-width: unset;
+            font-size: 40px;
+        }
+        &-item {
+            .products__featured-img {
+                width: 445px;
+                height: 445px;
+                margin-left: -20px;
+            }
+            &:before {
+                height: 380px;
+                width: calc(100% - 40px);
+            }
+            &:first-child {
+                &:before {
+                    height: 400px;
+                }
+            }
+        }
+
+        &-content {
+            .products__featured-name {
+                font-size: 40px;
+            }
+            .products__featured-desc {
+                font-size: 15px;
+            }
+        }
+    }
+    @include sm {
+        padding: var(--pd-section-mb) 0;
+        // Page 1
+        .products__options-list {
+            margin-top: 50px;
+        }
+        &-tabs {
+            .tabs__option {
+                font-size: 38px;
+                text-align: center;
+            }
+            &:after {
+                display: none;
+            }
+        }
+        .products__options-list {
+            .products__sublist-item {
+                margin-right: 20px;
+            }
+        }
+        &-item {
+            flex-direction: column;
+            align-items: center;
+            .products__featured-img {
+                margin-left: unset;
+            }
+            .right {
+                padding: unset;
+            }
+            &:nth-child(even) {
+                flex-direction: column;
+                align-items: center;
+                padding: unset;
+                .products__featured-img {
+                    margin-right: unset;
+                }
+            }
+            &:before {
+                display: none;
+            }
+            &:not(:first-child) {
+                margin-top: var(--pd-section-mb);
+            }
+        }
+
+        &-content {
+            text-align: center;
+            .products__featured-desc,
+            .products__featured-name {
+                max-width: unset;
+            }
+        }
+
+        //Page 2
+        .products__options-content {
+            &.textbox {
+                h3 {
+                    font-size: 44px;
+                }
+                p {
+                    font-size: 18px;
+                }
+            }
+        }
+        .products__options-list {
+            .bike__category {
+                padding: 50px 0;
+                flex-direction: column;
+                &-list {
+                    margin-bottom: 15px;
+                }
+                &-type {
+                    flex-direction: column;
+                }
+                &-engine {
+                    flex-direction: column;
+                }
+                .name {
+                    padding: 0;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+    @include xs {
+        &-tabs {
+            .tabs__option {
+                font-size: 20px;
+            }
+        }
+        &-content {
+            .products__featured-name {
+                font-size: 30px;
+                max-width: 230px;
+                margin: 0 auto;
+            }
+            .products__featured-desc {
+                font-size: 12px;
+            }
+        }
+        &-item {
+            .products__featured-img {
+                width: 100%;
+                height: 330px;
+                justify-self: stretch;
+            }
+        }
+        .products__options-list {
+            .range {
+                .title,
+                .price {
+                    font-size: 18px;
+                }
+                .wrapper {
+                    width: 40%;
+                }
+                input[type="range"]::-webkit-slider-thumb {
+                    height: 1.6em;
+                    width: 1.6em;
+                    margin-top: -5px;
+                 
+                }
+            }
+        }
+    }
+}
